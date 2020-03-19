@@ -1,0 +1,24 @@
+
+Dolby Atmos DBMD Parser (Version 1.0)
+Copyright (C) 2020, Dolby Laboratories Inc.
+
+Dolby Audio Metadata Wave Chunk Found
+
+Dolby Atmos Metadata
+   Created by: Dolby Atmos Conversion Tool (1.9.0)
+   warp_mode: warping
+
+Dolby Atmos Supplemental Metadata
+   Headphone metadata present: 
+   	binaural render mode: varied (objects have different values)
+   Trim Metadata:
+   	Trim mode: 2.0, automatic trims
+   	Trim mode: 5.1, automatic trims
+   	Trim mode: 7.1, automatic trims
+   	Trim mode: 2.1.2, automatic trims
+   	Trim mode: 5.1.2, automatic trims
+   	Trim mode: 7.1.2, automatic trims
+   	Trim mode: 2.1.4, automatic trims
+   	Trim mode: 5.1.4, automatic trims
+   	Trim mode: 7.1.4, automatic trims
+
