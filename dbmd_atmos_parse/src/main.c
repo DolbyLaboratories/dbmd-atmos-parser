@@ -305,6 +305,7 @@ int parse_wav_header(FILE *in_file)
 				if (fread(byte_buf, 1, 4, in_file) != 4)	/* read next subchunk ID */	
 					break;
 
+				subchunk_size = 0; /* reset subchunk_size value */
 				if (fread(&subchunk_size, 1, 4, in_file) != 4)	/* read subchunk size */
 					break;
 
@@ -389,12 +390,14 @@ int parse_wav_header(FILE *in_file)
 					}
 
 					/* advance to end of data chunk */
+					if (leftover_size > 0)
+					{
 #ifdef WIN32
-					_fseeki64(in_file, leftover_size, SEEK_CUR);	
+						_fseeki64(in_file, leftover_size, SEEK_CUR);
 #else
-					fseek(in_file, leftover_size, SEEK_CUR);	
+						fseek(in_file, leftover_size, SEEK_CUR);
 #endif 
-
+					}
 				}
 				else if (!strcmp(byte_buf,"dbmd"))	/* Dolby Audio Metadata Chunk */
 				{
@@ -415,13 +418,36 @@ int parse_wav_header(FILE *in_file)
 				else if (!strcmp(byte_buf,"axml"))	/* ADM XML Chunk */
 				{
 					status = status | WAV_AXML_CHUNK_MASK; /* update status */
-										
-					/* advance beyond remaining subchunk bytes */
+
+					if (subchunk_size > SIZE_LIMIT)
+					{
+						/* divide large file into mini-chunks */
+						num_mini_chunks = subchunk_size / SIZE_LIMIT;
+						mini_chunk_size = subchunk_size / num_mini_chunks;
+						leftover_size = subchunk_size - (num_mini_chunks * mini_chunk_size);
+						for (mchnk = 0; mchnk < num_mini_chunks; mchnk++)
+						{
 #ifdef WIN32
-					_fseeki64(in_file, subchunk_size, SEEK_CUR);
+							_fseeki64(in_file, mini_chunk_size, SEEK_CUR);
 #else
-					fseek(in_file, subchunk_size, SEEK_CUR); 
-#endif 				
+							fseek(in_file, mini_chunk_size, SEEK_CUR);
+#endif 
+						}
+					}
+					else
+					{
+						leftover_size = subchunk_size;
+					}
+
+					/* advance to end of axml chunk */
+					if (leftover_size > 0)
+					{
+#ifdef WIN32
+						_fseeki64(in_file, leftover_size, SEEK_CUR);
+#else
+						fseek(in_file, leftover_size, SEEK_CUR);
+#endif 
+					}
 				}				
 				else
 				{
