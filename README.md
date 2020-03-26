@@ -28,9 +28,9 @@ running on your local machine for development and testing purposes.
 
 - **dbmd_atmos_parse/** Main application folder.
 
--- **src/** Source code.
+    - **src/** Source code.
 
--- **make/** Build files.
+    - **make/** Build files.
 
 - **sample_files/** Sample Dolby Atmos ADM WAV files.
 
