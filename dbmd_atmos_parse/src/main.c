@@ -40,7 +40,7 @@
 #include "dbmd_text.h"
 
 /* Global Defines */
-#define REV_STR "1.0"
+#define REV_STR "1.1"
 #define SIZE_LIMIT 0x40000000u
 #define RF64_INDICATION 0xFFFFFFFFu
 #define MAX_DBMD_SIZE 6144
@@ -248,9 +248,6 @@ void display_dbmd_error(int error_code)
 			break;
 		case DB_ERR_DASCHECKSUM: 
 			printf("DBMD Error, checksum failure for Dolby Atmos Supplemental segment!\n");
-			break;
-		case DB_ERR_DAISATMOS:
-			printf("DBMD Error, invalid Dolby Atmos identifier for Dolby Atmos segment!\n");
 			break;
 	}
 }
