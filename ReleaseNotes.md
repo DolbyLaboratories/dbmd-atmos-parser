@@ -1,4 +1,4 @@
-Dolby Atmos DBMD Parser 1.0 release notes
+Dolby Atmos DBMD Parser 1.1 release notes
 =======================
 
 Dolby Atmos provides greater flexibility to create, transmit, and present content. Through the use of objects, an immersive experience can be provided. Each object is an audio signal plus its associated object audio metadata that contains individually-assigned object properties. The objects properties more explicitly specify how the content creator intends the audio content to be rendered to loudspeakers or headphones. 
@@ -22,3 +22,7 @@ Known issues:
 Version 1.0:
 --------------------
 - Initial release.
+
+Changes since 1.0:
+--------------------
+- Removed parsing of unsused metadata fields. 

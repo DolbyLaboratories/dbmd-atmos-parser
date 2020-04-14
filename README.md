@@ -1,5 +1,5 @@
 # Dolby Atmos DBMD Parser (dbmd_atmos_parse)
-# version 1.0
+# version 1.1
 
 dbmd_atmos_parse is a command line utility that parses the Dolby Audio Metadata (DBMD) chunk in a Dolby Atmos Audio Definition Model (ADM) WAV file. The tool displays the status of some Dolby Atmos metadata, including:
 
@@ -53,7 +53,7 @@ Go to the Windows MSVS directory under dbmd_atmos_parse/make/. In Visual Studio 
 dbmd_atmos_parse is a command line utility and the usage is provided by running the tool with no options.
 
 ```
-Dolby Atmos DBMD Parser (Version 1.0)
+Dolby Atmos DBMD Parser (Version 1.1)
 Copyright (C) 2020, Dolby Laboratories Inc.
 
 Usage: DBMD_ATMOS_PARSE <input ADM WAV file name> 
